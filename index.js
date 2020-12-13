@@ -5,6 +5,7 @@ const mysql = require('mysql2')
 const config = require('./configs')
 const vars = require('./middlewares/vars')
 const path = require('path')
+const filmRouter = require('./routers/film_router')
 
 
 const connection = mysql.createConnection({
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(vars(connection))
 
 //add routers here
+app.use('/films', filmRouter)
 
 app.listen(config.PORT, () => {
     connection.connect(err => {
