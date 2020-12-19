@@ -9,6 +9,7 @@ const path = require('path')
 const filmRouter = require('./routers/film_router')
 const sessionsRouter = require('./routers/sessions_router')
 const ticketsRouter = require('./routers/tickets_router')
+const statRouter = require('./routers/stat_router')
 
 
 const connection = mysql.createConnection({
@@ -38,6 +39,7 @@ app.use(vars(connection))
 app.use('/films', filmRouter)
 app.use('/sessions', sessionsRouter)
 app.use('/tickets', ticketsRouter)
+app.use('/stat', statRouter)
 
 app.listen(config.PORT, () => {
     connection.connect(err => {
